@@ -7,26 +7,26 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 
 @Module({
- imports: [
-  ConfigModule.forRoot({ isGlobal: true }),
-  TypeOrmModule.forRootAsync({
-   imports: [ConfigModule],
-   useFactory: (configService: ConfigService) => ({
-    type: 'postgres',
-    host: configService.get('DATABASE_HOST'),
-    port: +configService.get('DATABASE_PORT'),
-    username: configService.get('DATABASE_USER'),
-    password: configService.get('DATABASE_PASSWORD'),
-    database: configService.get('DATABASE_NAME'),
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    synchronize: true,
-   }),
-   inject: [ConfigService],
-  }),
-  AuthorModule,
-  CategoryModule,
-  PostModule,
-  CommentModule,
- ],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DATABASE_HOST'),
+        port: +configService.get('DATABASE_PORT'),
+        username: configService.get('DATABASE_USER'),
+        password: configService.get('DATABASE_PASSWORD'),
+        database: configService.get('DATABASE_NAME'),
+        entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
+    }),
+    AuthorModule,
+    CategoryModule,
+    PostModule,
+    CommentModule,
+  ],
 })
-export class AppModule { }
+export class AppModule {}

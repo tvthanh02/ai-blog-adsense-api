@@ -5,27 +5,30 @@ import { CommentReply } from '../comment/comment-reply.entity';
 
 @Entity()
 export class Author {
- @PrimaryGeneratedColumn('uuid')
- id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
- @Column()
- name: string;
+  @Column()
+  name: string;
 
- @Column({ unique: true })
- email: string;
+  @Column({ unique: true })
+  email: string;
 
- @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
- created_at: Date;
+  @Column()
+  bio?: string;
 
- @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
- updated_at: Date;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  created_at: Date;
 
- @OneToMany(() => Post, (post) => post.author)
- posts: Post[];
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updated_at: Date;
 
- @OneToMany(() => Comment, (comment) => comment.author)
- comments: Comment[];
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Post[];
 
- @OneToMany(() => CommentReply, (reply) => reply.author)
- replies: CommentReply[];
+  @OneToMany(() => Comment, (comment) => comment.author)
+  comments: Comment[];
+
+  @OneToMany(() => CommentReply, (reply) => reply.author)
+  replies: CommentReply[];
 }

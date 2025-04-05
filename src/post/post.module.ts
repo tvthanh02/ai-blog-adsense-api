@@ -8,13 +8,9 @@ import { AuthorModule } from '../author/author.module';
 import { CategoryModule } from '../category/category.module';
 
 @Module({
- imports: [
-  TypeOrmModule.forFeature([Post, PostImage]),
-  AuthorModule,
-  CategoryModule,
- ],
- providers: [PostService],
- controllers: [PostController],
- exports: [PostService]
+  imports: [TypeOrmModule.forFeature([Post, PostImage]), AuthorModule, CategoryModule],
+  providers: [PostService],
+  controllers: [PostController],
+  exports: [PostService],
 })
-export class PostModule { }
+export class PostModule {}

@@ -5,24 +5,24 @@ import { CommentReply } from './comment-reply.entity';
 
 @Entity()
 export class Comment {
- @PrimaryGeneratedColumn('uuid')
- id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
- @Column('text')
- content: string;
+  @Column('text')
+  content: string;
 
- @ManyToOne(() => Post, (post) => post.comments)
- post: Post;
+  @ManyToOne(() => Post, (post) => post.comments)
+  post: Post;
 
- @ManyToOne(() => Author, (author) => author.comments)
- author: Author;
+  @ManyToOne(() => Author, (author) => author.comments)
+  author: Author;
 
- @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
- created_at: Date;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  created_at: Date;
 
- @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
- updated_at: Date;
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updated_at: Date;
 
- @OneToMany(() => CommentReply, (reply) => reply.comment)
- replies: CommentReply[];
+  @OneToMany(() => CommentReply, (reply) => reply.comment)
+  replies: CommentReply[];
 }

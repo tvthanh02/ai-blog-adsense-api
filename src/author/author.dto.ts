@@ -1,9 +1,45 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export class CreateAuthorDto {
- name: string;
- email: string;
+  @ApiProperty({
+    description: 'The name of the author',
+    example: 'John Doe',
+  })
+  name: string;
+
+  @ApiProperty({
+    description: 'The email of the author',
+    example: 'john.doe@example.com',
+  })
+  email: string;
+
+  @ApiProperty({
+    description: 'The bio of the author',
+    example: 'A professional writer with 10 years of experience',
+    required: false,
+  })
+  bio?: string;
 }
 
 export class UpdateAuthorDto {
- name?: string;
- email?: string;
+  @ApiProperty({
+    description: 'The name of the author',
+    example: 'John Doe',
+    required: false,
+  })
+  name?: string;
+
+  @ApiProperty({
+    description: 'The email of the author',
+    example: 'john.doe@example.com',
+    required: false,
+  })
+  email?: string;
+
+  @ApiProperty({
+    description: 'The bio of the author',
+    example: 'A professional writer with 10 years of experience',
+    required: false,
+  })
+  bio?: string;
 }
