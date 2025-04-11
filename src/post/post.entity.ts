@@ -21,6 +21,9 @@ export class Post {
   @Column()
   description?: string;
 
+  @Column()
+  slug?: string;
+
   @ManyToOne(() => Author, author => author.posts)
   author: Author;
 

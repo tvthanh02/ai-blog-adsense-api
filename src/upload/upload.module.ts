@@ -9,21 +9,21 @@ import { UploadService } from './upload.service';
 // Ensure uploads directory exists
 const uploadsDir = path.join(__dirname, '../../uploads');
 if (!fs.existsSync(uploadsDir)) {
- fs.mkdirSync(uploadsDir, { recursive: true });
+  fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
 @Module({
- imports: [
-  MulterModule.register({
-   storage: diskStorage({
-    destination: uploadsDir,
-    filename: (req, file, callback) => {
-     callback(null, `${file.originalname}`);
-    },
-   }),
-  }),
- ],
- controllers: [UploadController],
- providers: [UploadService],
+  imports: [
+    MulterModule.register({
+      storage: diskStorage({
+        destination: uploadsDir,
+        filename: (req, file, callback) => {
+          callback(null, `${file.originalname}`);
+        },
+      }),
+    }),
+  ],
+  controllers: [UploadController],
+  providers: [UploadService],
 })
-export class UploadModule { }
+export class UploadModule {}
