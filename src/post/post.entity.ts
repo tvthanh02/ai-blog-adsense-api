@@ -24,9 +24,6 @@ export class Post {
   @Column({ nullable: true })
   slug: string;
 
-  @Column()
-  slug?: string;
-
   @ManyToOne(() => Author, author => author.posts)
   author: Author;
 
