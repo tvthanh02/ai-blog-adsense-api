@@ -9,7 +9,7 @@ export class PostImage {
   @Column()
   image_url: string;
 
-  @ManyToOne(() => Post, (post) => post.images)
+  @ManyToOne(() => Post, post => post.images)
   post: Post;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

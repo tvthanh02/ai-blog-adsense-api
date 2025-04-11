@@ -10,10 +10,10 @@ export class CommentReply {
   @Column('text')
   content: string;
 
-  @ManyToOne(() => Comment, (comment) => comment.replies)
+  @ManyToOne(() => Comment, comment => comment.replies)
   comment: Comment;
 
-  @ManyToOne(() => Author, (author) => author.replies)
+  @ManyToOne(() => Author, author => author.replies)
   author: Author;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

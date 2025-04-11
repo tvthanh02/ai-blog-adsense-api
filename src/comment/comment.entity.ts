@@ -11,10 +11,10 @@ export class Comment {
   @Column('text')
   content: string;
 
-  @ManyToOne(() => Post, (post) => post.comments)
+  @ManyToOne(() => Post, post => post.comments)
   post: Post;
 
-  @ManyToOne(() => Author, (author) => author.comments)
+  @ManyToOne(() => Author, author => author.comments)
   author: Author;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
@@ -23,6 +23,6 @@ export class Comment {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
-  @OneToMany(() => CommentReply, (reply) => reply.comment)
+  @OneToMany(() => CommentReply, reply => reply.comment)
   replies: CommentReply[];
 }

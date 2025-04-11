@@ -15,6 +15,6 @@ export class Category {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
-  @OneToMany(() => Post, (post) => post.category)
+  @OneToMany(() => Post, post => post.category)
   posts: Post[];
 }

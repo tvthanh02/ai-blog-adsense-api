@@ -36,7 +36,7 @@ export class PostService {
     const savedPost = await this.postRepository.save(post);
 
     if (imageUrls && imageUrls.length > 0) {
-      const images = imageUrls.map((url) =>
+      const images = imageUrls.map(url =>
         this.postImageRepository.create({ image_url: url, post: savedPost }),
       );
       await this.postImageRepository.save(images);
@@ -75,10 +75,7 @@ export class PostService {
 
   async search(query: string): Promise<Post[]> {
     return this.postRepository.find({
-      where: [
-        { title: Like(`%${query}%`) },
-        { content: Like(`%${query}%`) },
-      ],
+      where: [{ title: Like(`%${query}%`) }, { content: Like(`%${query}%`) }],
       relations: ['author', 'category', 'images', 'comments'],
     });
   }

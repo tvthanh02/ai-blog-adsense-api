@@ -1,10 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import * as express from 'express';
+import * as path from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
+  app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
   const config = new DocumentBuilder()
     .setTitle('AI Blog AdSense API')
@@ -14,6 +17,7 @@ async function bootstrap() {
     .addTag('posts')
     .addTag('categories')
     .addTag('comments')
+    .addTag('uploads')
     .addBearerAuth()
     .build();
 

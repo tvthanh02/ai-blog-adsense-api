@@ -21,10 +21,10 @@ export class Post {
   @Column()
   description?: string;
 
-  @ManyToOne(() => Author, (author) => author.posts)
+  @ManyToOne(() => Author, author => author.posts)
   author: Author;
 
-  @ManyToOne(() => Category, (category) => category.posts)
+  @ManyToOne(() => Category, category => category.posts)
   category: Category;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
@@ -33,9 +33,9 @@ export class Post {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
-  @OneToMany(() => PostImage, (image) => image.post)
+  @OneToMany(() => PostImage, image => image.post)
   images: PostImage[];
 
-  @OneToMany(() => Comment, (comment) => comment.post)
+  @OneToMany(() => Comment, comment => comment.post)
   comments: Comment[];
 }

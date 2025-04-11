@@ -23,12 +23,12 @@ export class Author {
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updated_at: Date;
 
-  @OneToMany(() => Post, (post) => post.author)
+  @OneToMany(() => Post, post => post.author)
   posts: Post[];
 
-  @OneToMany(() => Comment, (comment) => comment.author)
+  @OneToMany(() => Comment, comment => comment.author)
   comments: Comment[];
 
-  @OneToMany(() => CommentReply, (reply) => reply.author)
+  @OneToMany(() => CommentReply, reply => reply.author)
   replies: CommentReply[];
 }
