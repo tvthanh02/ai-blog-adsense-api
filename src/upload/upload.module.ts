@@ -18,11 +18,6 @@ if (!fs.existsSync(uploadsDir)) {
     MulterModule.register({
       storage: diskStorage({
         destination: uploadsDir,
-        filename: (req, file, callback) => {
-          const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-          const ext = extname(file.originalname);
-          callback(null, `${file.fieldname}-${uniqueSuffix}${ext}`);
-        },
       }),
     }),
   ],
