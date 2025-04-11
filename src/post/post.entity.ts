@@ -18,8 +18,11 @@ export class Post {
   @Column()
   thumbnail: string;
 
-  @Column()
-  description?: string;
+  @Column({ nullable: true })
+  description: string;
+
+  @Column({ nullable: true })
+  slug: string;
 
   @ManyToOne(() => Author, author => author.posts)
   author: Author;
