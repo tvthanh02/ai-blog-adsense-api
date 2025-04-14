@@ -21,7 +21,7 @@ export class Post {
   @Column({ nullable: true })
   description: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, unique: true })
   slug: string;
 
   @ManyToOne(() => Author, author => author.posts)

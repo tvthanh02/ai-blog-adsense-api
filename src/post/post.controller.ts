@@ -48,13 +48,22 @@ export class PostController {
     return this.postService.findByAuthor(authorId);
   }
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Get post by id' })
-  @ApiParam({ name: 'id', description: 'Post ID' })
+  // @Get(':id')
+  // @ApiOperation({ summary: 'Get post by id' })
+  // @ApiParam({ name: 'id', description: 'Post ID' })
+  // @ApiResponse({ status: 200, description: 'Return the post.' })
+  // @ApiResponse({ status: 404, description: 'Post not found.' })
+  // findOne(@Param('id') id: string) {
+  //   return this.postService.findOne(id);
+  // }
+
+  @Get(':slug')
+  @ApiOperation({ summary: 'Get post by slug' })
+  @ApiParam({ name: 'slug', description: 'Post Slug' })
   @ApiResponse({ status: 200, description: 'Return the post.' })
   @ApiResponse({ status: 404, description: 'Post not found.' })
-  findOne(@Param('id') id: string) {
-    return this.postService.findOne(id);
+  findBySlug(@Param('slug') slug: string) {
+    return this.postService.findBySlug(slug);
   }
 
   @Put(':id')

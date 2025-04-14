@@ -84,6 +84,13 @@ export class PostService {
     return this.searchByCategory(categoryId);
   }
 
+  async findBySlug(slug: string): Promise<Post | null> {
+    return this.postRepository.findOne({
+      where: { slug },
+      relations: ['author', 'category', 'images', 'comments'],
+    });
+  }
+
   async findByAuthor(authorId: string): Promise<Post[]> {
     return this.postRepository.find({
       where: { author: { id: authorId } },
