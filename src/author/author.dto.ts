@@ -42,4 +42,12 @@ export class UpdateAuthorDto {
     required: false,
   })
   bio?: string;
+
+  @ApiProperty({
+    description: 'The avatar of the author',
+    example:
+      'https://res.cloudinary.com/dwirhhhqt/image/upload/v1/uploads/ai-generating-image-from-text-concept-deepai?_a=BAMAJaWO0',
+    required: false,
+  })
+  avatar?: string;
 }

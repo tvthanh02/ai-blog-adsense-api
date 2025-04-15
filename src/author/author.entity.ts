@@ -15,7 +15,10 @@ export class Author {
   email: string;
 
   @Column()
-  bio?: string;
+  bio: string;
+
+  @Column({ nullable: true })
+  avatar: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created_at: Date;
